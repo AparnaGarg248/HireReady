@@ -1,17 +1,3 @@
-// ==================================================
-// BACKEND — APARNA
-//
-// File: backend/middleware/uploadMiddleware.js
-//
-// Purpose:
-// Multer middleware configuration for handling student resume uploads.
-//
-// Responsibilities:
-// 1. Configure local disk storage destination and safe filename generator.
-// 2. Validate allowed file extensions (PDF, DOC, DOCX).
-// 3. Enforce maximum file size limit (5MB).
-// ==================================================
-
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');

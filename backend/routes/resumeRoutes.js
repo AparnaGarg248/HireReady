@@ -1,18 +1,3 @@
-// ==================================================
-// BACKEND — APARNA
-//
-// File: backend/routes/resumeRoutes.js
-//
-// Purpose:
-// Express router for Student Resume Uploads and File Management.
-//
-// Routes:
-// POST   /api/resume/upload   -> resumeController.uploadResume (Multer)
-// GET    /api/resume          -> resumeController.getResume
-// GET    /api/resume/download -> resumeController.downloadResume
-// DELETE /api/resume          -> resumeController.deleteResume
-// ==================================================
-
 const express = require('express');
 const router = express.Router();
 const upload = require('../middleware/uploadMiddleware');

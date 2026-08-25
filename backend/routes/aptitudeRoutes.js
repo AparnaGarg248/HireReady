@@ -1,18 +1,3 @@
-// ==================================================
-// BACKEND — APARNA
-//
-// File: backend/routes/aptitudeRoutes.js
-//
-// Purpose:
-// Express router for Aptitude Assessments, Results, History & Analytics.
-//
-// Routes:
-// GET  /api/aptitude/questions -> aptitudeController.getQuestions
-// POST /api/aptitude/submit    -> aptitudeController.submitAssessment
-// GET  /api/aptitude/history   -> aptitudeController.getResultsHistory
-// GET  /api/aptitude/analytics -> aptitudeController.getAnalytics
-// ==================================================
-
 const express = require('express');
 const router = express.Router();
 const { protect } = require('../middleware/authMiddleware');

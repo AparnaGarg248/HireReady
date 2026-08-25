@@ -1,31 +1,9 @@
-// ==================================================
-// BACKEND — APARNA
-//
-// File: backend/config/db.js
-//
-// Purpose:
-// MongoDB Atlas database connection configuration using Mongoose.
-//
-// Responsibilities:
-// 1. Read MONGODB_URI from environment variables.
-// 2. Connect to MongoDB Atlas cluster with retry logic.
-// 3. Provide connection status and graceful fallback for local testing.
-// ==================================================
-
 const mongoose = require('mongoose');
 
 let isConnected = false;
 
 const connectDB = async () => {
   const uri = process.env.MONGODB_URI;
-
-  // ==================================================
-  // BACKEND — APARNA
-  // MONGODB ATLAS CONNECTION
-  //
-  // Add your MongoDB Atlas connection string inside the .env file:
-  // MONGODB_URI=YOUR_MONGODB_ATLAS_CONNECTION_STRING
-  // ==================================================
 
   if (!uri || uri.includes('YOUR_MONGODB_ATLAS_CONNECTION_STRING') || uri.includes('<username>')) {
     console.log('----------------------------------------------------');

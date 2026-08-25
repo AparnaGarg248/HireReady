@@ -1,18 +1,3 @@
-// ==================================================
-// BACKEND — APARNA
-//
-// File: backend/controllers/resumeController.js
-//
-// Purpose:
-// Controller for handling Student Resume Uploads and File Management using Multer.
-//
-// Endpoints:
-// - POST /api/resume/upload : Upload new resume (PDF/DOC/DOCX)
-// - GET  /api/resume        : Fetch active resume metadata
-// - GET  /api/resume/download : Download uploaded resume file
-// - DELETE /api/resume      : Delete uploaded resume
-// ==================================================
-
 const path = require('path');
 const fs = require('fs');
 const Resume = require('../models/Resume');

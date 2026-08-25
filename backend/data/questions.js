@@ -1,16 +1,3 @@
-// ==================================================
-// BACKEND — APARNA
-//
-// File: backend/data/questions.js
-//
-// Purpose:
-// Question bank for the Aptitude Assessment Module.
-// Contains curated multiple-choice questions across:
-// 1. Quantitative Aptitude
-// 2. Logical Reasoning
-// 3. Verbal Ability
-// ==================================================
-
 const questionBank = [
   // --- QUANTITATIVE APTITUDE ---
   {

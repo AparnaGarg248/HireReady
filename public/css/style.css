@@ -1,16 +1,3 @@
-/* ==================================================
-   FRONTEND — AASTHA
-
-   File: public/css/style.css
-
-   Purpose:
-   Global styling, typography, variables, buttons,
-   navbar, footer, utility classes, and layout rules.
-
-   Theme:
-   Professional Blue + White Placement Platform Theme.
-================================================== */
-
 :root {
   /* Professional Polish Palette: Deep Blues, Clean Slates, Crisp Accents */
   --primary-blue: #1d4ed8;

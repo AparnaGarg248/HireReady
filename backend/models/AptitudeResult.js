@@ -1,25 +1,3 @@
-// ==================================================
-// BACKEND — APARNA
-//
-// File: backend/models/AptitudeResult.js
-//
-// Purpose:
-// Mongoose schema and model for storing student aptitude test results.
-//
-// Fields:
-// - userId: Reference to User model
-// - category: Quantitative / Logical / Verbal / All-in-One
-// - totalQuestions: Total number of questions in test
-// - attemptedQuestions: Number of answered questions
-// - correctAnswers: Count of correctly answered questions
-// - incorrectAnswers: Count of wrong answers
-// - unattemptedQuestions: Count of skipped questions
-// - score: Calculated raw score (e.g. 15)
-// - percentage: Score percentage (e.g. 75.0%)
-// - timeTakenSeconds: Time spent completing test
-// - createdAt: Timestamp of test submission
-// ==================================================
-
 const mongoose = require('mongoose');
 
 const aptitudeResultSchema = new mongoose.Schema({

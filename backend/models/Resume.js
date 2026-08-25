@@ -1,21 +1,3 @@
-// ==================================================
-// BACKEND — APARNA
-//
-// File: backend/models/Resume.js
-//
-// Purpose:
-// Mongoose schema and model for student resume uploads.
-//
-// Fields:
-// - userId: Reference to the User model
-// - fileName: Original file name
-// - storedName: Stored file name on server
-// - filePath: Relative path where file is stored
-// - fileType: MIME type (PDF, DOC, DOCX)
-// - fileSize: Size of file in bytes
-// - uploadDate: Timestamp of upload
-// ==================================================
-
 const mongoose = require('mongoose');
 
 const resumeSchema = new mongoose.Schema({

@@ -1,19 +1,3 @@
-// ==================================================
-// BACKEND — APARNA
-//
-// File: backend/middleware/authMiddleware.js
-//
-// Purpose:
-// Express middleware to verify JSON Web Tokens (JWT)
-// on protected API routes.
-//
-// Responsibilities:
-// 1. Extract Bearer token from Authorization header.
-// 2. Verify token signature using JWT_SECRET.
-// 3. Attach decoded user data (userId, email) to req.user.
-// 4. Reject unauthenticated requests with 401 status.
-// ==================================================
-
 const jwt = require('jsonwebtoken');
 
 const JWT_SECRET = process.env.JWT_SECRET || 'hireready_secure_jwt_secret_key_2026';

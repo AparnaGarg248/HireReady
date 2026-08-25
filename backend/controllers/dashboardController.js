@@ -1,17 +1,3 @@
-// ==================================================
-// BACKEND — APARNA
-//
-// File: backend/controllers/dashboardController.js
-//
-// Purpose:
-// Controller for the Student Dashboard overview.
-// Aggregates user profile info, resume status, aptitude test statistics,
-// and chart data into a single efficient endpoint.
-//
-// Endpoint:
-// - GET /api/dashboard
-// ==================================================
-
 const User = require('../models/User');
 const Resume = require('../models/Resume');
 const AptitudeResult = require('../models/AptitudeResult');

@@ -1,22 +1,3 @@
-// ==================================================
-// BACKEND — APARNA
-//
-// File: backend/models/User.js
-//
-// Purpose:
-// Mongoose schema and model for User accounts (Student registration & authentication).
-//
-// Fields:
-// - name: Full name of the student
-// - email: Unique registered email address
-// - password: Encrypted password using bcrypt
-// - college: Optional college/institution name
-// - branch: Engineering/academic department
-// - graduationYear: Year of passing out
-// - phone: Contact number
-// - createdAt: Account creation timestamp
-// ==================================================
-
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({

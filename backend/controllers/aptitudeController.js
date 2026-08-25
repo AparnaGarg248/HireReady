@@ -1,24 +1,6 @@
-// ==================================================
-// BACKEND — APARNA
-//
-// File: backend/controllers/aptitudeController.js
-//
-// Purpose:
-// Controller for Aptitude Assessments, Score Calculation,
-// and Historical Analytics.
-//
-// Endpoints:
-// - GET  /api/aptitude/questions : Retrieve assessment questions
-// - POST /api/aptitude/submit    : Submit test, calculate score & save result
-// - GET  /api/aptitude/history   : Fetch assessment attempts history
-// - GET  /api/aptitude/results/:id: Fetch specific result details
-// - GET  /api/aptitude/analytics : Fetch analytics data for Chart.js
-// ==================================================
-
 const questionBank = require('../data/questions');
 const AptitudeResult = require('../models/AptitudeResult');
 
-// In-Memory Test Results Store (fallback / temporary mode)
 const memoryResults = [
   {
     id: 'res_sample_1',

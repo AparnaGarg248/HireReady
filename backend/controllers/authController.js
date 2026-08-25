@@ -1,18 +1,3 @@
-// ==================================================
-// BACKEND — APARNA
-//
-// File: backend/controllers/authController.js
-//
-// Purpose:
-// Controller for Student Authentication & Profile Management.
-//
-// Endpoints:
-// - POST /api/auth/register : Register new student account
-// - POST /api/auth/login    : Authenticate student & return JWT
-// - GET  /api/auth/profile  : Get student profile information
-// - PUT  /api/auth/profile  : Update student profile
-// ==================================================
-
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');

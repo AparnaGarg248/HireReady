@@ -1,16 +1,3 @@
-/* ==================================================
-   FRONTEND — AASTHA
-
-   File: public/css/dashboard.css
-
-   Purpose:
-   Styles for Student Dashboard, stats cards, metrics grid,
-   and Chart.js performance visualization containers.
-
-   Theme:
-   Professional Polish — Slate-50, Blue-900 & White Student Analytics Interface.
-================================================== */
-
 .dashboard-wrapper {
   padding: 28px 0 52px;
 }

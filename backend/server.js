@@ -1,21 +1,3 @@
-// ==================================================
-// BACKEND — APARNA
-//
-// File: backend/server.js
-//
-// Purpose:
-// Main entry point of the Node.js + Express backend for HireReady AI.
-//
-// Responsibilities:
-// 1. Load environment variables via dotenv.
-// 2. Initialize Express application.
-// 3. Connect to MongoDB Atlas database.
-// 4. Configure security and parsing middleware (CORS, Express JSON).
-// 5. Mount API routes (/api/auth, /api/resume, /api/aptitude, /api/dashboard).
-// 6. Serve frontend static assets from public/ directory.
-// 7. Bind server to host 0.0.0.0 and port 3000.
-// ==================================================
-
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
