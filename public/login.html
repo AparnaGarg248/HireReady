@@ -1,86 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Login — HireReady AI</title>
-  
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/auth.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Login — HireReady AI</title>
 
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="container nav-container">
-      <a href="index.html" class="brand-logo">
-        <i class="fa-solid fa-graduation-cap"></i>
-        <span>HireReady <span style="color: var(--accent-sky);">AI</span></span>
-      </a>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/auth.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="container nav-container">
+        <a href="index.html" class="brand-logo">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>HireReady <span style="color: var(--accent-sky)">AI</span></span>
+        </a>
 
-      <div class="nav-auth">
-        <a href="register.html" class="btn btn-primary btn-sm">Register as New Student</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Login Main Container -->
-  <main class="auth-wrapper">
-    <div class="auth-card">
-      <div class="auth-header">
-        <div class="auth-logo">
-          <i class="fa-solid fa-user-lock"></i>
+        <div class="nav-auth">
+          <a href="register.html" class="btn btn-primary btn-sm">Register as New Student</a>
         </div>
-        <h1 class="auth-title">Student Login</h1>
-        <p class="auth-subtitle">Sign in to access your placement dashboard and tests</p>
       </div>
+    </nav>
 
-      <form id="login-form" class="auth-form">
-        <div class="form-group">
-          <label for="email" class="form-label">Email Address</label>
-          <input 
-            type="email" 
-            id="email" 
-            name="email" 
-            class="form-input" 
-            placeholder="e.g. student@chitkara.edu.in" 
-            required 
-            autocomplete="email"
+    <!-- Login Main Container -->
+    <main class="auth-wrapper">
+      <div class="auth-card">
+        <div class="auth-header">
+          <div class="auth-logo">
+            <i class="fa-solid fa-user-lock"></i>
+          </div>
+          <h1 class="auth-title">Student Login</h1>
+          <p class="auth-subtitle">Sign in to access your placement dashboard and tests</p>
+        </div>
+
+        <form id="login-form" class="auth-form">
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="e.g. student@chitkara.edu.in"
+              required
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-input"
+              placeholder="Enter password..."
+              required
+              autocomplete="current-password"
+            />
+          </div>
+
+          <button
+            type="submit"
+            id="login-submit-btn"
+            class="btn btn-primary"
+            style="width: 100%; margin-top: 8px"
           >
+            Sign In to Dashboard
+          </button>
+        </form>
+
+        <div class="auth-footer">
+          Don't have an account? <a href="register.html">Register here</a>
         </div>
-
-        <div class="form-group">
-          <label for="password" class="form-label">Password</label>
-          <input 
-            type="password" 
-            id="password" 
-            name="password" 
-            class="form-input" 
-            placeholder="Enter password..." 
-            required 
-            autocomplete="current-password"
-          >
-        </div>
-
-        <button type="submit" id="login-submit-btn" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
-          <i class="fa-solid fa-right-to-bracket"></i> Sign In to Dashboard
-        </button>
-      </form>
-
-      <div class="auth-footer">
-        Don't have an account? <a href="register.html">Register here</a>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <footer class="footer" style="padding: 24px 0;">
-    <div class="container" style="text-align: center; font-size: 0.85rem;">
-      © 2026 HireReady AI • Placement Readiness and Career Analytics Platform
-    </div>
-  </footer>
+    <footer class="footer" style="padding: 24px 0">
+      <div class="container" style="text-align: center; font-size: 0.85rem">
+        © 2026 HireReady AI • Placement Readiness and Career Analytics Platform
+      </div>
+    </footer>
 
-  <script src="js/main.js"></script>
-  <script src="js/auth.js"></script>
-</body>
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
 </html>
