@@ -1,0 +1,179 @@
+<!-- ==================================================
+     FRONTEND — AASTHA
+
+     File: public/resume.html
+
+     Purpose:
+     Student Resume Management module for HireReady AI.
+     Allows uploading PDF/DOC/DOCX files with Multer backend integration,
+     shows file metadata, upload timestamp, and enables download/deletion.
+
+     Technologies:
+     HTML5, CSS3, JavaScript, Fetch API, Multer
+================================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Management — HireReady AI</title>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .upload-zone {
+      border: 2px dashed var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 48px 24px;
+      text-align: center;
+      background-color: var(--bg-surface);
+      cursor: pointer;
+      transition: var(--transition);
+      margin-bottom: 24px;
+    }
+    .upload-zone:hover {
+      border-color: var(--primary-blue);
+      background-color: var(--primary-light);
+    }
+    .upload-icon {
+      font-size: 3rem;
+      color: var(--primary-blue);
+      margin-bottom: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="dashboard.html" class="brand-logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>HireReady <span style="color: var(--accent-sky);">AI</span></span>
+      </a>
+
+      <ul class="nav-links" id="nav-links-container">
+        <li><a href="dashboard.html" class="nav-link" id="nav-dashboard">Dashboard</a></li>
+        <li><a href="aptitude.html" class="nav-link" id="nav-aptitude">Aptitude Test</a></li>
+        <li><a href="resume.html" class="nav-link active" id="nav-resume">Resume</a></li>
+        <li><a href="profile.html" class="nav-link" id="nav-profile">Profile</a></li>
+      </ul>
+
+      <div class="nav-auth" id="nav-auth-container"></div>
+    </div>
+  </nav>
+
+  <main class="dashboard-wrapper">
+    <div class="container" style="max-width: 900px;">
+      
+      <div class="section-header" style="text-align: left; margin-bottom: 28px;">
+        <div class="section-subtitle">Document Repository</div>
+        <h2 class="section-title">Resume Management</h2>
+        <p class="section-desc" style="margin: 0;">
+          Upload and maintain your current resume for placement preparation and records.
+        </p>
+      </div>
+
+      <!-- Active Resume Card (If Uploaded) -->
+      <div id="uploaded-resume-card" class="card" style="display: none; margin-bottom: 28px; border-left: 5px solid var(--status-success);">
+        <div class="card-header">
+          <div class="card-title" style="display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-circle-check" style="color: var(--status-success);"></i>
+            Current Uploaded Resume
+          </div>
+          <span class="badge badge-success">Active File</span>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin: 16px 0;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div class="feature-icon" style="width: 50px; height: 50px; font-size: 1.5rem; margin-bottom: 0; background-color: var(--status-success-bg); color: var(--status-success); border-color: var(--status-success-border);">
+              <i class="fa-solid fa-file-pdf"></i>
+            </div>
+            <div>
+              <h3 id="resume-file-name" style="font-size: 1.1rem; color: var(--primary-deep); margin-bottom: 4px;">resume.pdf</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">
+                Size: <span id="resume-file-size" style="font-weight: 600;">--</span> • Uploaded: <span id="resume-upload-date" style="font-weight: 600;">--</span>
+              </p>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 10px;">
+            <button onclick="handleDownloadResume()" class="btn btn-primary btn-sm">
+              <i class="fa-solid fa-download"></i> Download
+            </button>
+            <button onclick="handleDeleteResume()" class="btn btn-outline btn-sm" style="color: var(--status-danger);">
+              <i class="fa-solid fa-trash"></i> Remove
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- No Resume Notice -->
+      <div id="no-resume-box" class="alert alert-info" style="display: none;">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>No resume uploaded yet. Use the upload box below to add your resume file (.pdf, .doc, or .docx).</span>
+      </div>
+
+      <!-- Upload Form Card -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fa-solid fa-cloud-arrow-up" style="color: var(--primary-blue); margin-right: 8px;"></i>
+            Upload or Replace Resume
+          </div>
+          <span class="badge badge-blue">Max 5 MB</span>
+        </div>
+
+        <form id="resume-upload-form">
+          <input type="file" id="resume-file-input" name="resume" accept=".pdf,.doc,.docx" style="display: none;">
+          
+          <div class="upload-zone" id="drop-zone">
+            <div class="upload-icon">
+              <i class="fa-solid fa-file-arrow-up"></i>
+            </div>
+            <h3 style="margin-bottom: 8px; color: var(--primary-dark);">Drag & Drop your Resume here</h3>
+            <p style="margin-bottom: 16px;">or <span style="color: var(--primary-blue); font-weight: 600;">browse files</span> from your computer</p>
+            <span class="badge badge-blue">Supported Formats: PDF, DOC, DOCX</span>
+          </div>
+
+          <div id="selected-file-info" style="display: none; align-items: center; justify-content: space-between; background-color: var(--primary-light); padding: 12px 16px; border-radius: var(--radius-sm); margin-bottom: 20px; border: 1px solid var(--primary-border);">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <i class="fa-solid fa-paperclip" style="color: var(--primary-blue);"></i>
+              <span id="selected-file-name" style="font-weight: 600; color: var(--primary-dark);">file.pdf</span>
+            </div>
+            <span class="badge badge-success">Ready to Upload</span>
+          </div>
+
+          <button type="submit" id="resume-submit-btn" class="btn btn-primary" style="width: 100%;" disabled>
+            <i class="fa-solid fa-upload"></i> Upload Resume to HireReady AI
+          </button>
+        </form>
+      </div>
+
+      <!-- Guidelines Card -->
+      <div class="card" style="margin-top: 24px; background-color: var(--bg-alt);">
+        <h4 style="margin-bottom: 12px; color: var(--primary-dark);">
+          <i class="fa-solid fa-lightbulb" style="color: var(--status-warning); margin-right: 6px;"></i>
+          Resume Upload Best Practices
+        </h4>
+        <ul style="padding-left: 20px; color: var(--text-muted); font-size: 0.9rem; line-height: 1.8;">
+          <li>Ensure your resume is updated with your latest academic CGPA, projects, and technical skills.</li>
+          <li>Standard PDF format is recommended for preserving document formatting and fonts.</li>
+          <li>Keep the document clean, ATS-friendly, and under 5 MB in file size.</li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer" style="padding: 24px 0;">
+    <div class="container" style="text-align: center; font-size: 0.85rem;">
+      © 2026 HireReady AI • Placement Preparation & Career Analytics Platform
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/resume.js"></script>
+</body>
+</html>

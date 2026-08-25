@@ -1,0 +1,122 @@
+<!-- ==================================================
+     FRONTEND — AASTHA
+
+     File: public/results.html
+
+     Purpose:
+     Aptitude Assessment Results & Review page for HireReady AI.
+     Displays computed raw score, percentage, attempted/correct/incorrect
+     counts, and detailed question solutions with explanations.
+
+     Technologies:
+     HTML5, CSS3, JavaScript
+================================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assessment Result & Review — HireReady AI</title>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/assessment.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="dashboard.html" class="brand-logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>HireReady <span style="color: var(--accent-sky);">AI</span></span>
+      </a>
+
+      <ul class="nav-links" id="nav-links-container">
+        <li><a href="dashboard.html" class="nav-link" id="nav-dashboard">Dashboard</a></li>
+        <li><a href="aptitude.html" class="nav-link active" id="nav-aptitude">Aptitude Test</a></li>
+        <li><a href="resume.html" class="nav-link" id="nav-resume">Resume</a></li>
+        <li><a href="profile.html" class="nav-link" id="nav-profile">Profile</a></li>
+      </ul>
+
+      <div class="nav-auth" id="nav-auth-container"></div>
+    </div>
+  </nav>
+
+  <main class="test-wrapper">
+    <div class="container" style="max-width: 960px;">
+
+      <!-- Results Hero Score Card -->
+      <section class="results-hero">
+        <span class="badge" style="background: rgba(255,255,255,0.2); color: #ffffff; font-size: 0.9rem;" id="res-category">
+          Comprehensive Assessment
+        </span>
+        <div class="results-score-badge" id="res-percentage">
+          0%
+        </div>
+        <p style="color: #bfdbfe; font-size: 1.1rem; margin-bottom: 20px;">
+          Assessment Score: <strong id="res-score" style="color: #ffffff;">0 / 0</strong>
+        </p>
+        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+          <a href="aptitude.html" class="btn btn-secondary btn-sm" style="background: #ffffff; color: var(--primary-dark);">
+            <i class="fa-solid fa-rotate-right"></i> Take Another Test
+          </a>
+          <a href="dashboard.html" class="btn btn-outline btn-sm" style="color: #ffffff; border-color: rgba(255,255,255,0.4);">
+            <i class="fa-solid fa-table-columns"></i> Back to Dashboard
+          </a>
+        </div>
+      </section>
+
+      <!-- Detailed Metrics Row -->
+      <section class="results-stats-row">
+        <div class="stat-box">
+          <div class="stat-box-number" id="res-total" style="color: var(--primary-dark);">0</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Total Questions</div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-box-number" id="res-attempted" style="color: var(--primary-blue);">0</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Questions Attempted</div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-box-number" id="res-correct" style="color: var(--status-success);">0</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Correct Answers</div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-box-number" id="res-incorrect" style="color: var(--status-danger);">0</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Incorrect Answers</div>
+        </div>
+      </section>
+
+      <!-- Question-by-Question Review Section -->
+      <section>
+        <div class="section-header" style="text-align: left; margin-bottom: 20px;">
+          <h3 style="color: var(--primary-dark);">
+            <i class="fa-solid fa-list-check" style="color: var(--primary-blue); margin-right: 8px;"></i>
+            Detailed Question Review & Solutions
+          </h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">
+            Analyze your answers alongside the official correct answers and explanations.
+          </p>
+        </div>
+
+        <div id="review-container">
+          <!-- Injected dynamically by aptitude.js -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer" style="padding: 24px 0;">
+    <div class="container" style="text-align: center; font-size: 0.85rem;">
+      © 2026 HireReady AI • Placement Preparation & Career Analytics Platform
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/aptitude.js"></script>
+</body>
+</html>

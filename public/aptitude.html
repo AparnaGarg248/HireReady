@@ -1,0 +1,249 @@
+<!-- ==================================================
+     FRONTEND — AASTHA
+
+     File: public/aptitude.html
+
+     Purpose:
+     Aptitude Assessment interface for HireReady AI.
+     Contains category selection, live timed test execution,
+     question navigation, options selection, and submission.
+
+     Technologies:
+     HTML5, CSS3, JavaScript, Fetch API
+================================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aptitude Assessment — HireReady AI</title>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/assessment.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="dashboard.html" class="brand-logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>HireReady <span style="color: var(--accent-sky);">AI</span></span>
+      </a>
+
+      <ul class="nav-links" id="nav-links-container">
+        <li><a href="dashboard.html" class="nav-link" id="nav-dashboard">Dashboard</a></li>
+        <li><a href="aptitude.html" class="nav-link active" id="nav-aptitude">Aptitude Test</a></li>
+        <li><a href="resume.html" class="nav-link" id="nav-resume">Resume</a></li>
+        <li><a href="profile.html" class="nav-link" id="nav-profile">Profile</a></li>
+      </ul>
+
+      <div class="nav-auth" id="nav-auth-container"></div>
+    </div>
+  </nav>
+
+  <main class="test-wrapper">
+    <div class="container">
+
+      <!-- 1. CATEGORY SELECTION & HISTORY VIEW -->
+      <div id="test-selection-view">
+        <div class="section-header" style="text-align: left; margin-bottom: 24px;">
+          <div class="section-subtitle">Skill Evaluation</div>
+          <h2 class="section-title">Aptitude Assessment Portal</h2>
+          <p class="section-desc" style="margin: 0;">
+            Select an assessment category to practice recruitment-standard multiple-choice aptitude tests.
+          </p>
+        </div>
+
+        <!-- Category Cards Grid -->
+        <div class="category-selection-grid">
+          <!-- Category 1: Comprehensive -->
+          <div class="category-card selected" data-category="Comprehensive Assessment">
+            <div class="category-icon-box">
+              <i class="fa-solid fa-layer-group"></i>
+            </div>
+            <h3 style="margin-bottom: 6px; font-size: 1.15rem;">Comprehensive Test</h3>
+            <p style="font-size: 0.85rem; margin-bottom: 16px;">
+              Full placement test combining Quantitative, Logical Reasoning, and Verbal Ability.
+            </p>
+            <span class="badge badge-blue" style="align-self: flex-start;">20 Questions • 20 Mins</span>
+          </div>
+
+          <!-- Category 2: Quantitative Aptitude -->
+          <div class="category-card" data-category="Quantitative Aptitude">
+            <div class="category-icon-box">
+              <i class="fa-solid fa-calculator"></i>
+            </div>
+            <h3 style="margin-bottom: 6px; font-size: 1.15rem;">Quantitative Aptitude</h3>
+            <p style="font-size: 0.85rem; margin-bottom: 16px;">
+              Percentages, Profit & Loss, Time & Work, Ratios, Simple Interest, and Averages.
+            </p>
+            <span class="badge badge-blue" style="align-self: flex-start;">7 Questions • 10 Mins</span>
+          </div>
+
+          <!-- Category 3: Logical Reasoning -->
+          <div class="category-card" data-category="Logical Reasoning">
+            <div class="category-icon-box">
+              <i class="fa-solid fa-puzzle-piece"></i>
+            </div>
+            <h3 style="margin-bottom: 6px; font-size: 1.15rem;">Logical Reasoning</h3>
+            <p style="font-size: 0.85rem; margin-bottom: 16px;">
+              Number Series, Coding-Decoding, Blood Relations, Directions, and Logical Patterns.
+            </p>
+            <span class="badge badge-blue" style="align-self: flex-start;">6 Questions • 10 Mins</span>
+          </div>
+
+          <!-- Category 4: Verbal Ability -->
+          <div class="category-card" data-category="Verbal Ability">
+            <div class="category-icon-box">
+              <i class="fa-solid fa-book-open"></i>
+            </div>
+            <h3 style="margin-bottom: 6px; font-size: 1.15rem;">Verbal Ability</h3>
+            <p style="font-size: 0.85rem; margin-bottom: 16px;">
+              Grammar, Sentence Correction, Synonyms, Antonyms, Prepositions, and Vocabulary.
+            </p>
+            <span class="badge badge-blue" style="align-self: flex-start;">7 Questions • 10 Mins</span>
+          </div>
+        </div>
+
+        <!-- Start Test Action -->
+        <div style="margin: 32px 0 48px; text-align: center;">
+          <button id="start-test-btn" class="btn btn-primary btn-lg" style="padding: 16px 40px;">
+            <i class="fa-solid fa-play"></i> Start Selected Assessment
+          </button>
+        </div>
+
+        <!-- Assessment History Section -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fa-solid fa-clock-rotate-left" style="color: var(--primary-blue); margin-right: 6px;"></i>
+              Your Assessment History
+            </div>
+            <span class="badge badge-blue">Saved Attempts</span>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Category</th>
+                  <th>Raw Score</th>
+                  <th>Attempted</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+              <tbody id="history-table-body">
+                <!-- Injected dynamically -->
+              </tbody>
+            </table>
+          </div>
+
+          <div id="empty-history-msg" class="empty-state" style="display: none;">
+            <div class="empty-icon"><i class="fa-solid fa-hourglass-start"></i></div>
+            <p>You haven't completed any assessments yet. Choose a category above and start practicing!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. ACTIVE TEST ENVIRONMENT VIEW (Initially Hidden) -->
+      <div id="active-test-view" style="display: none;">
+        <!-- Test Header Bar -->
+        <div class="test-header-bar">
+          <div>
+            <span class="badge badge-blue" id="q-category" style="font-size: 0.9rem;">Comprehensive Assessment</span>
+            <span class="badge" id="q-topic" style="background-color: var(--bg-alt); margin-left: 6px;">Topic</span>
+          </div>
+
+          <div class="timer-pill">
+            <i class="fa-solid fa-clock"></i>
+            <span id="timer-display">20:00</span>
+          </div>
+        </div>
+
+        <!-- Main Test Layout -->
+        <div class="test-layout">
+          <!-- Left: Question & Options -->
+          <div>
+            <div class="question-container">
+              <div class="question-meta">
+                <span id="q-number" style="font-weight: 700; color: var(--primary-blue); font-size: 1.05rem;">Question 1</span>
+                <span id="q-total" style="color: var(--text-muted); font-size: 0.9rem;">of 20</span>
+              </div>
+
+              <div class="question-text" id="q-text">
+                Loading question statement...
+              </div>
+
+              <!-- Options List -->
+              <div class="options-list" id="options-list">
+                <!-- Injected dynamically -->
+              </div>
+
+              <!-- Action Controls -->
+              <div class="test-actions">
+                <div style="display: flex; gap: 8px;">
+                  <button id="btn-prev-q" class="btn btn-outline btn-sm" onclick="prevQuestion()">
+                    <i class="fa-solid fa-arrow-left"></i> Previous
+                  </button>
+                  <button class="btn btn-outline btn-sm" onclick="clearSelectedOption()">
+                    <i class="fa-solid fa-eraser"></i> Clear Option
+                  </button>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                  <button id="btn-next-q" class="btn btn-secondary btn-sm" onclick="nextQuestion()">
+                    Next Question <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                  <button class="btn btn-primary btn-sm" onclick="promptSubmitTest()">
+                    <i class="fa-solid fa-check-double"></i> Submit Test
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Question Navigator Palette -->
+          <div>
+            <div class="palette-card">
+              <h4 style="font-size: 1rem; color: var(--primary-dark); margin-bottom: 4px;">Question Navigator</h4>
+              <p style="font-size: 0.8rem; color: var(--text-muted);">Jump directly to any question</p>
+
+              <div class="palette-grid" id="palette-grid">
+                <!-- Injected dynamically -->
+              </div>
+
+              <div class="palette-legend">
+                <div class="legend-item">
+                  <div class="legend-dot" style="background-color: var(--primary-blue);"></div>
+                  <span>Answered</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-dot" style="background-color: var(--bg-alt); border: 1px solid var(--border-light);"></div>
+                  <span>Unanswered</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-dot" style="border: 2px solid var(--primary-dark);"></div>
+                  <span>Current Question</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer" style="padding: 24px 0;">
+    <div class="container" style="text-align: center; font-size: 0.85rem;">
+      © 2026 HireReady AI • Placement Preparation & Career Analytics Platform
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/aptitude.js"></script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!-- ==================================================
+     FRONTEND — AASTHA
+
+     File: public/dashboard.html
+
+     Purpose:
+     Main Student Dashboard for HireReady AI.
+     Displays student welcome banner, resume status,
+     aptitude metrics, Chart.js performance curve,
+     and recent test history.
+
+     Technologies:
+     HTML5, CSS3, JavaScript, Chart.js, Fetch API
+================================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard — HireReady AI</title>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="dashboard.html" class="brand-logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>HireReady <span style="color: var(--accent-sky);">AI</span></span>
+      </a>
+
+      <ul class="nav-links" id="nav-links-container">
+        <li><a href="dashboard.html" class="nav-link active" id="nav-dashboard">Dashboard</a></li>
+        <li><a href="aptitude.html" class="nav-link" id="nav-aptitude">Aptitude Test</a></li>
+        <li><a href="resume.html" class="nav-link" id="nav-resume">Resume</a></li>
+        <li><a href="profile.html" class="nav-link" id="nav-profile">Profile</a></li>
+      </ul>
+
+      <div class="nav-auth" id="nav-auth-container">
+        <!-- Injected dynamically by main.js -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Dashboard Container -->
+  <main class="dashboard-wrapper">
+    <div class="container">
+      
+      <!-- Welcome Hero Banner -->
+      <section class="welcome-banner">
+        <div class="welcome-content">
+          <h1>Welcome back, <span id="student-name">Student</span>!</h1>
+          <p id="student-college">Chitkara University • Placement Preparation</p>
+        </div>
+        <div class="welcome-meta">
+          <div class="welcome-chip">
+            <i class="fa-solid fa-envelope"></i>
+            <span id="student-email">student@email.com</span>
+          </div>
+          <div class="welcome-chip">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Active Student Portal</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Key Metrics Overview Grid -->
+      <section class="metrics-grid">
+        <!-- Metric 1: Resume Status -->
+        <div class="metric-card">
+          <div class="metric-info">
+            <h4>Resume Status</h4>
+            <div style="margin: 8px 0;">
+              <span id="resume-status-badge" class="badge badge-warning">Loading...</span>
+            </div>
+            <div class="metric-subtext" id="resume-info-text">Checking document...</div>
+          </div>
+          <div class="metric-icon">
+            <i class="fa-solid fa-file-lines"></i>
+          </div>
+        </div>
+
+        <!-- Metric 2: Assessments Attempted -->
+        <div class="metric-card">
+          <div class="metric-info">
+            <h4>Tests Attempted</h4>
+            <div class="metric-value" id="metric-attempts">0</div>
+            <div class="metric-subtext">Completed evaluations</div>
+          </div>
+          <div class="metric-icon">
+            <i class="fa-solid fa-pen-ruler"></i>
+          </div>
+        </div>
+
+        <!-- Metric 3: Latest Aptitude Score -->
+        <div class="metric-card">
+          <div class="metric-info">
+            <h4>Latest Score</h4>
+            <div class="metric-value" id="metric-latest-score">N/A</div>
+            <div class="metric-subtext" id="metric-latest-percentage">No attempts yet</div>
+          </div>
+          <div class="metric-icon">
+            <i class="fa-solid fa-bullseye"></i>
+          </div>
+        </div>
+
+        <!-- Metric 4: Average Score -->
+        <div class="metric-card">
+          <div class="metric-info">
+            <h4>Average Score</h4>
+            <div class="metric-value" id="metric-avg-score">N/A</div>
+            <div class="metric-subtext">Overall test mean</div>
+          </div>
+          <div class="metric-icon">
+            <i class="fa-solid fa-chart-simple"></i>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Action Cards -->
+      <section class="quick-actions-grid">
+        <div class="action-card">
+          <div>
+            <div class="action-header">
+              <div class="feature-icon" style="width: 40px; height: 40px; font-size: 1.1rem; margin-bottom: 0;">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <h3>Take Aptitude Assessment</h3>
+            </div>
+            <p class="action-desc">
+              Practice timed tests across Quantitative, Logical Reasoning, and Verbal Ability to assess your placement readiness.
+            </p>
+          </div>
+          <a href="aptitude.html" class="btn btn-primary btn-sm">
+            <i class="fa-solid fa-play"></i> Start Assessment
+          </a>
+        </div>
+
+        <div class="action-card">
+          <div>
+            <div class="action-header">
+              <div class="feature-icon" style="width: 40px; height: 40px; font-size: 1.1rem; margin-bottom: 0;">
+                <i class="fa-solid fa-file-arrow-up"></i>
+              </div>
+              <h3>Manage Your Resume</h3>
+            </div>
+            <p class="action-desc">
+              Upload, update, or download your official student CV (.pdf, .doc, .docx) for campus recruitment drives.
+            </p>
+          </div>
+          <a href="resume.html" class="btn btn-secondary btn-sm">
+            <i class="fa-solid fa-upload"></i> Go to Resume Hub
+          </a>
+        </div>
+
+        <div class="action-card">
+          <div>
+            <div class="action-header">
+              <div class="feature-icon" style="width: 40px; height: 40px; font-size: 1.1rem; margin-bottom: 0;">
+                <i class="fa-solid fa-id-card"></i>
+              </div>
+              <h3>Student Profile</h3>
+            </div>
+            <p class="action-desc">
+              View and edit your personal academic profile details, branch, graduation batch, and contact details.
+            </p>
+          </div>
+          <a href="profile.html" class="btn btn-outline btn-sm">
+            <i class="fa-solid fa-user-pen"></i> Edit Profile
+          </a>
+        </div>
+      </section>
+
+      <!-- Visual Analytics & Recent History Grid -->
+      <section class="dashboard-grid">
+        <!-- Chart.js Performance Tracking Card -->
+        <div class="chart-card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fa-solid fa-chart-line" style="color: var(--primary-blue); margin-right: 6px;"></i>
+              Aptitude Performance Analytics
+            </div>
+            <span class="badge badge-blue">Progress Curve</span>
+          </div>
+          
+          <div id="chart-empty-message" class="empty-state" style="display: none;">
+            <div class="empty-icon"><i class="fa-solid fa-chart-pie"></i></div>
+            <p>No assessment attempts recorded yet.</p>
+            <a href="aptitude.html" class="btn btn-primary btn-sm" style="margin-top: 12px;">Take Your First Test</a>
+          </div>
+
+          <div class="chart-container">
+            <canvas id="performanceChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Recent Attempts History Card -->
+        <div class="chart-card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fa-solid fa-clock-rotate-left" style="color: var(--primary-blue); margin-right: 6px;"></i>
+              Recent Assessments
+            </div>
+            <a href="aptitude.html" style="font-size: 0.85rem; font-weight: 600;">View All</a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Category</th>
+                  <th>Score</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody id="recent-attempts-body">
+                <!-- Injected dynamically -->
+              </tbody>
+            </table>
+          </div>
+
+          <div id="empty-attempts-msg" class="empty-state" style="display: none; padding: 20px;">
+            <p>No assessment history yet.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" style="padding: 24px 0;">
+    <div class="container" style="text-align: center; font-size: 0.85rem;">
+      © 2026 HireReady AI • Intelligent Placement Readiness Platform
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!-- ==================================================
+     FRONTEND — AASTHA
+
+     File: public/index.html
+
+     Purpose:
+     Main landing page of HireReady AI.
+     Provides overview of placement preparation tools,
+     features, how it works, and direct access to register/login.
+
+     Technologies:
+     HTML5, CSS3, JavaScript
+================================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HireReady AI — Placement Preparation & Career Analytics Platform</title>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Font Awesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>HireReady <span style="color: var(--accent-sky);">AI</span></span>
+      </a>
+
+      <ul class="nav-links" id="nav-links-container">
+        <li><a href="index.html" class="nav-link active" id="nav-home">Home</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+      </ul>
+
+      <div class="nav-auth" id="nav-auth-container">
+        <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-tag">
+        <i class="fa-solid fa-bolt"></i> Placement Readiness Platform
+      </div>
+      
+      <h1 class="hero-title">
+        Prepare Smarter. Perform Better. Get Placement Ready.
+      </h1>
+      
+      <p class="hero-subtitle">
+        HireReady AI helps students organize their placement preparation through resume management, aptitude assessments and performance tracking.
+      </p>
+      
+      <div class="hero-actions">
+        <a href="register.html" class="btn btn-primary btn-lg">
+          <i class="fa-solid fa-rocket"></i> Get Started
+        </a>
+        <a href="aptitude.html" class="btn btn-secondary btn-lg">
+          <i class="fa-solid fa-pen-to-square"></i> Take Assessment
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-subtitle">Core Capabilities</div>
+        <h2 class="section-title">Everything You Need For Placement Preparation</h2>
+        <p class="section-desc">
+          Structured tools designed to help engineering and college students streamline campus placement readiness.
+        </p>
+      </div>
+
+      <div class="grid-4">
+        <!-- Feature 1: Resume Management -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fa-solid fa-file-arrow-up"></i>
+          </div>
+          <h3 class="feature-title">Resume Management</h3>
+          <p>Upload and manage your resume in one place with secure cloud storage and format validation.</p>
+        </div>
+
+        <!-- Feature 2: Aptitude Assessment -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fa-solid fa-brain"></i>
+          </div>
+          <h3 class="feature-title">Aptitude Assessment</h3>
+          <p>Test quantitative, logical and verbal reasoning skills with standard timed multiple-choice assessments.</p>
+        </div>
+
+        <!-- Feature 3: Performance Tracking -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <h3 class="feature-title">Performance Tracking</h3>
+          <p>View your assessment performance, score breakdown, percentages, and progress trends over time.</p>
+        </div>
+
+        <!-- Feature 4: Student Dashboard -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fa-solid fa-table-columns"></i>
+          </div>
+          <h3 class="feature-title">Student Dashboard</h3>
+          <p>Access important placement preparation information, test history, and academic profile from one place.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works-section" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-subtitle">Simple Workflow</div>
+        <h2 class="section-title">How HireReady AI Works</h2>
+        <p class="section-desc">A step-by-step pathway to evaluate and accelerate your campus recruitment readiness.</p>
+      </div>
+
+      <div class="steps-container">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h4 style="margin-bottom: 8px;">Create Account</h4>
+          <p style="font-size: 0.9rem;">Register with your college email and set up your student profile.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h4 style="margin-bottom: 8px;">Upload Resume</h4>
+          <p style="font-size: 0.9rem;">Upload your latest PDF/DOC resume for centralized placement record keeping.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h4 style="margin-bottom: 8px;">Take Assessment</h4>
+          <p style="font-size: 0.9rem;">Attempt Quantitative, Logical, and Verbal aptitude tests under real time limits.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h4 style="margin-bottom: 8px;">Review Analytics</h4>
+          <p style="font-size: 0.9rem;">Inspect question solutions, calculate scores, and monitor growth on the dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="features-section" id="about" style="background-color: var(--bg-surface);">
+    <div class="container">
+      <div class="card" style="padding: 40px 32px; text-align: center; border-color: var(--primary-border);">
+        <div class="hero-tag" style="margin-bottom: 12px;">About HireReady AI</div>
+        <h2 style="color: var(--primary-dark); margin-bottom: 16px;">Empowering Students for Placement Success</h2>
+        <p style="max-width: 760px; margin: 0 auto 24px; font-size: 1.05rem;">
+          HireReady AI is built as a centralized placement readiness platform. It bridges the gap between academic preparation and corporate recruitment tests by providing accurate aptitude evaluation, transparent scoring algorithms, and organized profile tracking.
+        </p>
+        <a href="register.html" class="btn btn-primary">Start Your Placement Journey</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-logo" style="color: #ffffff; margin-bottom: 12px;">
+            <i class="fa-solid fa-graduation-cap" style="color: #60a5fa;"></i>
+            <span>HireReady AI</span>
+          </div>
+          <p style="color: #94a3b8; font-size: 0.9rem; max-width: 380px;">
+            An Intelligent Placement Readiness and Career Analytics Platform for student aptitude evaluation, resume management, and performance tracking.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Student Dashboard</a></li>
+            <li><a href="aptitude.html">Aptitude Tests</a></li>
+            <li><a href="resume.html">Resume Upload</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Account</h4>
+          <ul>
+            <li><a href="login.html">Student Login</a></li>
+            <li><a href="register.html">Create Account</a></li>
+            <li><a href="profile.html">Student Profile</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 HireReady AI. All rights reserved.</div>
+        <div>Built for Placement Preparation & Academic Excellence.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>

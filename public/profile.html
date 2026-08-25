@@ -1,0 +1,154 @@
+<!-- ==================================================
+     FRONTEND — AASTHA
+
+     File: public/profile.html
+
+     Purpose:
+     Student Profile Management for HireReady AI.
+     Allows viewing and editing academic details,
+     displays resume status, and provides overall
+     aptitude assessment statistics.
+
+     Technologies:
+     HTML5, CSS3, JavaScript, Fetch API
+================================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Profile — HireReady AI</title>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="dashboard.html" class="brand-logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>HireReady <span style="color: var(--accent-sky);">AI</span></span>
+      </a>
+
+      <ul class="nav-links" id="nav-links-container">
+        <li><a href="dashboard.html" class="nav-link" id="nav-dashboard">Dashboard</a></li>
+        <li><a href="aptitude.html" class="nav-link" id="nav-aptitude">Aptitude Test</a></li>
+        <li><a href="resume.html" class="nav-link" id="nav-resume">Resume</a></li>
+        <li><a href="profile.html" class="nav-link active" id="nav-profile">Profile</a></li>
+      </ul>
+
+      <div class="nav-auth" id="nav-auth-container"></div>
+    </div>
+  </nav>
+
+  <main class="dashboard-wrapper">
+    <div class="container" style="max-width: 960px;">
+      
+      <!-- Profile Header Hero -->
+      <section class="card" style="margin-bottom: 28px; background: linear-gradient(135deg, var(--primary-light) 0%, var(--bg-surface) 100%); border-color: var(--primary-border);">
+        <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+          <div style="width: 72px; height: 72px; border-radius: var(--radius-full); background: var(--primary-blue); color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 800; box-shadow: var(--shadow-sm);">
+            <i class="fa-solid fa-user-graduate"></i>
+          </div>
+          <div>
+            <h1 id="profile-hero-name" style="font-size: 1.6rem; color: var(--primary-dark); margin-bottom: 4px;">Student Name</h1>
+            <p id="profile-hero-email" style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 6px;">student@chitkara.edu.in</p>
+            <span class="badge badge-blue">Verified Student Account</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Placement Readiness Summary Grid -->
+      <div class="grid-3" style="margin-bottom: 28px;">
+        <!-- Resume Status Card -->
+        <div class="card">
+          <h4 style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px;">Resume Verification</h4>
+          <div style="margin-bottom: 8px;">
+            <span id="profile-resume-status" class="badge badge-warning">Loading...</span>
+          </div>
+          <a href="resume.html" style="font-size: 0.85rem; font-weight: 600;">Manage Resume &rarr;</a>
+        </div>
+
+        <!-- Highest Aptitude Score -->
+        <div class="card">
+          <h4 style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px;">Highest Test Score</h4>
+          <div class="metric-value" id="profile-highest-score" style="font-size: 1.5rem;">N/A</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted);">Best attempt percentage</div>
+        </div>
+
+        <!-- Total Attempts -->
+        <div class="card">
+          <h4 style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px;">Assessments Completed</h4>
+          <div class="metric-value" id="profile-total-attempts" style="font-size: 1.5rem;">0</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted);">Mean score: <strong id="profile-avg-score">N/A</strong></div>
+        </div>
+      </div>
+
+      <!-- Edit Profile Form -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fa-solid fa-user-pen" style="color: var(--primary-blue); margin-right: 8px;"></i>
+            Academic Profile Information
+          </div>
+          <span class="badge badge-blue">Editable</span>
+        </div>
+
+        <form id="profile-edit-form">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label for="profile-name" class="form-label">Full Name *</label>
+              <input type="text" id="profile-name" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label for="profile-email" class="form-label">Registered Email</label>
+              <input type="email" id="profile-email" class="form-input" disabled style="background-color: var(--bg-alt); cursor: not-allowed;">
+              <span class="form-hint">Email cannot be changed after registration.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="profile-college" class="form-label">University / College</label>
+              <input type="text" id="profile-college" class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label for="profile-branch" class="form-label">Branch / Department</label>
+              <input type="text" id="profile-branch" class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label for="profile-grad-year" class="form-label">Graduation Year</label>
+              <input type="text" id="profile-grad-year" class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label for="profile-phone" class="form-label">Contact Number</label>
+              <input type="tel" id="profile-phone" class="form-input" placeholder="+91 XXXXX XXXXX">
+            </div>
+          </div>
+
+          <div style="margin-top: 12px; display: flex; justify-content: flex-end;">
+            <button type="submit" id="profile-save-btn" class="btn btn-primary">
+              <i class="fa-solid fa-floppy-disk"></i> Save Profile Details
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer" style="padding: 24px 0;">
+    <div class="container" style="text-align: center; font-size: 0.85rem;">
+      © 2026 HireReady AI • Placement Preparation & Career Analytics Platform
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>
